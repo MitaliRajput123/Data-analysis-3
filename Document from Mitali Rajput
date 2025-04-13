@@ -1,0 +1,36 @@
+Use Task3;
+Create table employee(emp_id Int(5) , first_name Char(6) , last_name Char(8) ,gender Char(6) ,salary Int(6) ,branch_id Int(2));
+select*from employee;
+insert into employee(emp_id , first_name ,last_name ,gender ,salary ,branch_id)
+value(20,'Finn','Miller','Male',25000,12),
+(21,'Lucas','Miller','Male',30000,15),(22,'jay','Miller','Male',25000,11),(23,'james','Miller','Male',35000,14);
+create table branch(branch_id Int(2) , branch_name Char(8) ,mgr_id Int(2) ,mgr_start_date Date);
+select*from branch;
+insert into branch(branch_id, branch_name,mgr_id,mgr_start_date)
+value(1,'Insuranc',20,'2012-03-22'),(2,'Account',25,'2011-04-22'),(3,'Energy',10,'2014-02-22');
+create table  branch_supplier(branch_id int(2) ,supplier_name char(8) ,supplier_type char(8));
+select*from branch_supplier;
+insert into branch_supplier(branch_id, supplier_name, supplier_type)
+value(2,'s.direk','Insuranc'),(2,'Inshared','Insuranc'),(3,'Ostrom','Renewabl'),(1,'Combank','Credit');
+create table clients(client_id int(2) ,first_name Char(6) , last_name Char(8) ,branch_id int(2));
+select*from clients;
+insert into clients(client_id ,first_name ,last_name ,branch_id)
+value(12,'Ella','Miller',2),(13,'John','Miller',1),(14,'Dirk','Miller',3),(15,'Fork','Miller',1);
+create table works_with(emp_id int(5) ,client_id int(2) ,total_sales int(6));
+select*from works_with;
+insert into works_with(emp_id ,client_id ,total_sales)
+value(20,12,125000),(21,14,250000),(23,15,20000),(22,13,230000);
+-- delete employee more than 20000 total_sales:)
+select*from works_with;
+delete from works_with Where client_id =15;
+-- order employees by total sales more than 20000:)
+select * from works_with
+Order by total_sales;
+select * from employee inner join works_with
+on employee.emp_id = works_with.emp_id;
+
+
+
+
+
+
